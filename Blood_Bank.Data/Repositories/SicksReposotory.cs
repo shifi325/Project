@@ -19,12 +19,12 @@ namespace Blood_Bank.Data.Repositories
      
         public List<Sicks> GetAll()
         {
-            return _context.SicksList;
+            return _context.SicksList.ToList();
         }
 
         public Sicks Get(int id)
         {
-            return _context.SicksList.Find(s => s.idSick == id);
+            return _context.SicksList.ToList().Find(s => s.idSick == id);
            
         }
         public void Post(Sicks sic)
@@ -35,7 +35,7 @@ namespace Blood_Bank.Data.Repositories
 
         public void Put(int id, Sicks sic)
         {
-            var sic2 = _context.SicksList.Find(s => s.idSick == id);
+            var sic2 = _context.SicksList.ToList().Find(s => s.idSick == id);
             sic2.idSick = sic.idSick;
             sic2.fNameSick = sic.fNameSick;
             sic2.lNameSick = sic.lNameSick;
@@ -46,7 +46,7 @@ namespace Blood_Bank.Data.Repositories
 
         public void Delete(int id)
         {
-            var sic1 = _context.SicksList.Find(s => s.idSick == id);
+            var sic1 = _context.SicksList.ToList().Find(s => s.idSick == id);
             _context.SicksList.Remove(sic1);
          
         }
